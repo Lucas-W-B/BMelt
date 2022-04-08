@@ -5,30 +5,19 @@
 @using System.Resources
 @using System.Collections
 
-<PageTitle>Calendar</PageTitle>
+<PageTitle>Meal Plan</PageTitle>
 
-<h1>Calendar</h1>
+<h1>Meal Plan</h1>
 
 <p role="status">@DateTime.Today.ToString("dddd MMM d")</p>
 
 <table>
     <thead>
-        @BuildWeekRow(new [] {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
     </thead>
     <tbody>
-        @BuildWeekRow(new [] {"1", "2", "3", "4", "5", "6", "7"})
     </tbody>
 </table>
 
 @code {
-    public Calendar Calendar;
-    private MarkupString BuildWeekRow(string[] items)
-    {
-        var sbWeekHtml = new StringBuilder();
-        foreach (var item in items)
-        {
-            sbWeekHtml.AppendLine($"<tr><td>{item}</td></tr>");
-        }
-        return (MarkupString)sbWeekHtml.ToString();
-    }
+    public BMelt.ClassLibrary.MealPlan Model;
 }

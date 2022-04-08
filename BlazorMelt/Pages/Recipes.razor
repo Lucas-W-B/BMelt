@@ -5,11 +5,32 @@
 @using System.Resources
 @using System.Collections
 
+<link href="css/recipe-card.css?20220408" rel="stylesheet" />
 <PageTitle>Recipes</PageTitle>
 
 <h1>Recipes</h1>
 
+@foreach (var recipeCard in Model)
+{
+    <BMelt.ClassLibrary.Razor.ShortRecipe Model=@recipeCard />
+}
+
 
 @code {
-
+    public IEnumerable<BMelt.ClassLibrary.Recipe> Model = new []
+    {
+        new BMelt.ClassLibrary.Recipe
+        {
+            Name = "TestName", 
+            Author = new BMelt.ClassLibrary.Author {FirstName = "Ted"},
+            Cuisines = new[] { BMelt.ClassLibrary.Enums.Cuisine.American, BMelt.ClassLibrary.Enums.Cuisine.ComfortFood },
+            ImagePath = "https://picturetherecipe.com/wp-content/uploads/2020/04/Vanilla-Cardamom-Kulfi-PTR-Featured.jpg"
+        },
+        new BMelt.ClassLibrary.Recipe
+        {
+            Name = "TestName2", 
+            Author = new BMelt.ClassLibrary.Author {FirstName = "Red"},
+            Cuisines = new[] { BMelt.ClassLibrary.Enums.Cuisine.InstantPot, BMelt.ClassLibrary.Enums.Cuisine.LowFat }
+        }
+    };
 }

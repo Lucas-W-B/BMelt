@@ -1,0 +1,10 @@
+﻿<PageTitle>@Model.Name</PageTitle>
+
+<h3>@Model.Name</h3>
+
+By @Model.Author.FirstName
+
+@code {
+    [Parameter]
+    public ClassLibrary.Recipe Model { get; set; }
+}

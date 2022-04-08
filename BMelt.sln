@@ -4,9 +4,9 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt", "BMelt\BMelt.csproj", "{A4A43196-AA36-4883-A1D2-CBC00292ABFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMelt", "BlazorMelt\BlazorMelt.csproj", "{A0CEC754-F7EF-4CF8-84C2-E88A61B5A512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMelt", "BlazorMelt\BlazorMelt.csproj", "{A0CEC754-F7EF-4CF8-84C2-E88A61B5A512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMelt.ClassLibrary", "BMelt.ClassLibrary\BMelt.ClassLibrary.csproj", "{B21B0065-F8E1-4D7B-9226-4F70FC9F2514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt.ClassLibrary", "BMelt.ClassLibrary\BMelt.ClassLibrary.csproj", "{B21B0065-F8E1-4D7B-9226-4F70FC9F2514}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
