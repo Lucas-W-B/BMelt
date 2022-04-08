@@ -4,6 +4,7 @@
 @using System.Globalization
 @using System.Resources
 @using System.Collections
+@using BMelt.ClassLibrary.Models
 
 <link href="css/recipe-card.css?20220408" rel="stylesheet" />
 <PageTitle>Recipes</PageTitle>
@@ -17,20 +18,19 @@
 
 
 @code {
-    public IEnumerable<BMelt.ClassLibrary.Recipe> Model = new []
+    public IEnumerable<BMelt.ClassLibrary.Models.Recipe> Model = new []
     {
-        new BMelt.ClassLibrary.Recipe
+        new BMelt.ClassLibrary.Models.Recipe
         {
             Name = "TestName", 
-            Author = new BMelt.ClassLibrary.Author {FirstName = "Ted"},
-            Cuisines = new[] { BMelt.ClassLibrary.Enums.Cuisine.American, BMelt.ClassLibrary.Enums.Cuisine.ComfortFood },
+            Author = new BMelt.ClassLibrary.Models.Author {FirstName = "Ted"},
+            Cuisines = new[] { new Cuisine {Name = "Mexican"}, new Cuisine {Name = "Italian"} },
             ImagePath = "https://picturetherecipe.com/wp-content/uploads/2020/04/Vanilla-Cardamom-Kulfi-PTR-Featured.jpg"
         },
-        new BMelt.ClassLibrary.Recipe
+        new BMelt.ClassLibrary.Models.Recipe
         {
             Name = "TestName2", 
-            Author = new BMelt.ClassLibrary.Author {FirstName = "Red"},
-            Cuisines = new[] { BMelt.ClassLibrary.Enums.Cuisine.InstantPot, BMelt.ClassLibrary.Enums.Cuisine.LowFat }
+            Author = new BMelt.ClassLibrary.Models.Author {FirstName = "Red"}
         }
     };
 }

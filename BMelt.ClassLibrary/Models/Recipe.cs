@@ -1,9 +1,11 @@
-﻿using BMelt.ClassLibrary.Enums;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BMelt.ClassLibrary
+namespace BMelt.ClassLibrary.Models
 {
     public class Recipe
     {
+        [Key]
+        public Guid Id { get; set; }
         public Author Author { get; set; }
         public string Name { get; set; }
         public string ImagePath { get; set; }

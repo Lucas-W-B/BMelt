@@ -1,17 +1,19 @@
 ﻿@using BMelt.ClassLibrary.Enums
 
-<div class="recipe-card">
-    <label>@Model.Name</label>
-    <ul class="cuisines">
-        @foreach (var cuisine in @Model.Cuisines)
-        {
-           <li>@cuisine.ToString()</li>
-        }
-    </ul>
-    <img src="@Model.ImagePath" />
-</div>
+<a href="recipe/@Model.Id">
+    <div class="recipe-card">
+        <label>@Model.Name</label>
+        <ul class="cuisines">
+            @foreach (var cuisine in Model.Cuisines)
+            {
+               <li>@cuisine.ToString()</li>
+            }
+        </ul>
+        <img src="@Model.ImagePath" />
+    </div>
+</a>
 
 @code {
     [Parameter]
-    public ClassLibrary.Recipe Model { get; set; }
+    public ClassLibrary.Models.Recipe Model { get; set; }
 }
