@@ -11,10 +11,10 @@
 
 <h1>Recipes</h1>
 
-@foreach (var recipeCard in Model)
+@*@foreach (var recipeCard in Model)
 {
     <BMelt.ClassLibrary.Razor.ShortRecipe Model=@recipeCard />
-}
+}*@
 
 
 @code {
@@ -22,6 +22,7 @@
     {
         new BMelt.ClassLibrary.Models.Recipe
         {
+            Id = Guid.Empty,
             Name = "TestName", 
             Author = new BMelt.ClassLibrary.Models.Author {FirstName = "Ted"},
             Cuisines = new[] { new Cuisine {Name = "Mexican"}, new Cuisine {Name = "Italian"} },
@@ -29,6 +30,7 @@
         },
         new BMelt.ClassLibrary.Models.Recipe
         {
+            Id = Guid.Empty,
             Name = "TestName2", 
             Author = new BMelt.ClassLibrary.Models.Author {FirstName = "Red"}
         }

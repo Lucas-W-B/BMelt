@@ -1,4 +1,4 @@
-﻿@using BMelt.ClassLibrary.Enums
+﻿@inherits BMelt.Razor.Pages.ShortRecipe
 
 <a href="recipe/@Model.Id">
     <div class="recipe-card">
@@ -12,8 +12,3 @@
         <img src="@Model.ImagePath" />
     </div>
 </a>
-
-@code {
-    [Parameter]
-    public ClassLibrary.Models.Recipe Model { get; set; }
-}

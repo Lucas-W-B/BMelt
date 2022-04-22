@@ -13,6 +13,8 @@ namespace BMelt.ClassLibrary.Repository
         public DbSet<Step> Steps { get; set; }
         public DbSet<Tool> Tools { get; set; }
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

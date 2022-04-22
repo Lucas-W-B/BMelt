@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\Recipe.razor" />
+    <None Remove="Pages\ShortRecipe.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\Recipe.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="Pages\ShortRecipe.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BMelt.ClassLibrary\BMelt.ClassLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
