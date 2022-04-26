@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Pages\Recipe.razor" />
-    <None Remove="Pages\ShortRecipe.razor" />
+    <None Remove="Pages\RecipePage.razor" />
+    <None Remove="Pages\ShortRecipePage.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Pages\Recipe.razor">
+    <Content Include="Pages\RecipePage.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
-    <Content Include="Pages\ShortRecipe.razor">
+    <Content Include="Pages\ShortRecipePage.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
   </ItemGroup>

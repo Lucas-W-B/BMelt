@@ -1,57 +1,71 @@
 using BMelt.ClassLibrary.Models;
 using BMelt.ClassLibrary.Repository;
-using BMelt.ClassLibrary.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DatabaseContext>();
+
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IRepository<Recipe>, RecipeRepository>();
+builder.Services.AddScoped<IRepository<Author>, ItemRepository<Author>>();
+builder.Services.AddScoped<IRepository<Cuisine>, ItemRepository<Cuisine>>();
+builder.Services.AddScoped<IRepository<Ingredient>, ItemRepository<Ingredient>>();
+builder.Services.AddScoped<IRepository<Meal>, ItemRepository<Meal>>();
+builder.Services.AddScoped<IRepository<NutritionFact>, ItemRepository<NutritionFact>>();
+builder.Services.AddScoped<IRepository<Step>, ItemRepository<Step>>();
+builder.Services.AddScoped<IRepository<Tool>, ItemRepository<Tool>>();
+builder.Services.AddScoped<IRepository<User>, ItemRepository<User>>();
+//TODO: DI for DB context + all of the repos
 
 var app = builder.Build();
-builder.Services.AddDbContext<DatabaseContext>();
-//TODO: DI for DB context + all of the repos
 app.UseHttpsRedirection();
 
-MapAuthorEndPoints(app);
-//MapCuisineEndPoints(app);
-//MapIngredientEndPoints(app);
-//MapMealEndPoints(app);
-//MapMealPlanEndPoints(app);
-//MapNutritionFactEndPoints(app);
-//MapRecipeEndPoints(app);
-//MapStepEndPoints(app);
-//MapToolEndPoints(app);
-//MapUserEndPoints(app);
+MapEndPoint<Author>(app);
+MapEndPoint<Cuisine>(app);
+MapEndPoint<Ingredient>(app);
+MapEndPoint<Meal>(app);
+MapEndPoint<NutritionFact>(app);
+MapEndPoint<Recipe>(app);
+MapEndPoint<Step>(app);
+MapEndPoint<Tool>(app);
+MapEndPoint<User>(app);
+
+MapRecipeOverrides(app);
 
 app.Run();
 
-static void MapAuthorEndPoints(WebApplication app)
+static void MapEndPoint<T>(WebApplication app)
 {
-    app.MapGet("/author", async (IAuthorRepository repo) => await repo.GetAuthorsAsync());
+    app.MapGet($"/{typeof(T)}", async (IRepository<T> repo) => await repo.GetAsync());
 
-    app.MapGet("/author/{id}", async (Guid id, IAuthorRepository repo) =>
+    app.MapGet($"/{typeof(T)}/{{id}}", async (Guid id, IRepository<T> repo) =>
     {
-        return (await repo.GetAuthorAsync(id)) is Author author
-                    ? Results.Ok(author)
+        return (await repo.GetAsync(id)) is T item
+                    ? Results.Ok(item)
                     : Results.NotFound();
     });
 
-    app.MapPost("/author", async (Author author, IAuthorRepository repo) =>
+    app.MapPost($"/{typeof(T)}", async (T item, IRepository<T> repo) =>
     {
-        await repo.AddAuthorAsync(author);
-        return Results.Created($"/author/{author.Id}", author);
+        var id = await repo.AddAsync(item);
+        return Results.Created($"/{typeof(T)}/{id}", item);
     }); 
     
-    app.MapPut("/author/{id}", async (Guid id, Author author, IAuthorRepository repo) =>
+    app.MapPut($"/{typeof(T)}/{{id}}", async (Guid id, T item, IRepository<T> repo) =>
     {
-        var updatedAuthor = await repo.UpdateAuthorAsync(author);
-        return updatedAuthor == null ? Results.NotFound() : Results.NoContent();
+        var updatedItem = await repo.UpdateAsync(item);
+        return updatedItem == null ? Results.NotFound() : Results.NoContent();
     });
     
-    app.MapDelete("/author/{id}", async (Guid id, IAuthorRepository repo) =>
+    app.MapDelete($"/{typeof(T)}/{{id}}", async (Guid id, IRepository<T> repo) =>
     {
-        return await repo.DeleteAuthorAsync(id) ? Results.Ok() : Results.NotFound();
+        return await repo.DeleteAsync(id) ? Results.Ok() : Results.NotFound();
     });
+}
+
+static void MapRecipeOverrides(WebApplication app)
+{
+    app.MapGet($"/Recipe/{{cuisine}}", async (Cuisine cuisine, IRecipeRepository repo) => await repo.GetAsync(cuisine));
 }
