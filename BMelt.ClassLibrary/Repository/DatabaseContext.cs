@@ -5,6 +5,21 @@ namespace BMelt.ClassLibrary.Repository
 {
     public class DatabaseContext : DbContext
     {
+        private readonly string _dbPath = "";
+        public DatabaseContext(string? dbPath = null)
+        {
+            if (dbPath != null)
+            {
+                _dbPath = dbPath;
+            }
+            else 
+            {
+                var folder = Environment.SpecialFolder.LocalApplicationData;
+                var path = Environment.GetFolderPath(folder);
+                _dbPath = Path.Join(path, "BMelt.db");
+            }
+        }
+        
         public DbSet<Recipe> Recipes => Set<Recipe>();
         public DbSet<Ingredient> Ingredients => Set<Ingredient>();
         public DbSet<Author> Authors => Set<Author>();
@@ -15,5 +30,7 @@ namespace BMelt.ClassLibrary.Repository
         public DbSet<Meal> Meals => Set<Meal>();
         public DbSet<Cuisine> Cuisines => Set<Cuisine>();
         public DbSet<User> Users => Set<User>();
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source={_dbPath}");
     }
 }
