@@ -17,9 +17,10 @@ builder.Services.AddScoped<IRepository<NutritionFact>, ItemRepository<NutritionF
 builder.Services.AddScoped<IRepository<Step>, ItemRepository<Step>>();
 builder.Services.AddScoped<IRepository<Tool>, ItemRepository<Tool>>();
 builder.Services.AddScoped<IRepository<User>, ItemRepository<User>>();
-//TODO: DI for DB context + all of the repos
 
 var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 MapEndPoint<Author>(app);
@@ -38,28 +39,29 @@ app.Run();
 
 static void MapEndPoint<T>(WebApplication app)
 {
-    app.MapGet($"/{typeof(T)}", async (IRepository<T> repo) => await repo.GetAsync());
+    var typeName = typeof(T).Name;
+    app.MapGet($"/{typeName}", async (IRepository<T> repo) => await repo.GetAsync());
 
-    app.MapGet($"/{typeof(T)}/{{id}}", async (Guid id, IRepository<T> repo) =>
+    app.MapGet($"/{typeName}/{{id}}", async (Guid id, IRepository<T> repo) =>
     {
         return (await repo.GetAsync(id)) is T item
                     ? Results.Ok(item)
                     : Results.NotFound();
     });
 
-    app.MapPost($"/{typeof(T)}", async (T item, IRepository<T> repo) =>
+    app.MapPost($"/{typeName}", async (T item, IRepository<T> repo) =>
     {
         var id = await repo.AddAsync(item);
         return Results.Created($"/{typeof(T)}/{id}", item);
     }); 
     
-    app.MapPut($"/{typeof(T)}/{{id}}", async (Guid id, T item, IRepository<T> repo) =>
+    app.MapPut($"/{typeName}/{{id}}", async (Guid id, T item, IRepository<T> repo) =>
     {
         var updatedItem = await repo.UpdateAsync(item);
         return updatedItem == null ? Results.NotFound() : Results.NoContent();
     });
     
-    app.MapDelete($"/{typeof(T)}/{{id}}", async (Guid id, IRepository<T> repo) =>
+    app.MapDelete($"/{typeName}/{{id}}", async (Guid id, IRepository<T> repo) =>
     {
         return await repo.DeleteAsync(id) ? Results.Ok() : Results.NotFound();
     });
@@ -67,5 +69,5 @@ static void MapEndPoint<T>(WebApplication app)
 
 static void MapRecipeOverrides(WebApplication app)
 {
-    app.MapGet($"/Recipe/{{cuisine}}", async (Cuisine cuisine, IRecipeRepository repo) => await repo.GetAsync(cuisine));
+    app.MapGet($"/Recipe/{{cuisineId}}", async (Guid cuisineId, IRecipeRepository repo) => await repo.GetByCuisineAsync(cuisineId));
 }

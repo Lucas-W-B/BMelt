@@ -12,9 +12,9 @@ namespace BMelt.ClassLibrary.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Recipe>> GetAsync(Cuisine cuisine)
+        public async Task<IEnumerable<Recipe>> GetByCuisineAsync(Guid cuisineId)
         {
-            return await _dbContext.Recipes.Where(x => x.Cuisines.Any(c => c.Id == cuisine.Id)).ToListAsync();
+            return await _dbContext.Recipes.Where(x => x.Cuisines.Any(c => c.Id == cuisineId)).ToListAsync();
         }
 
     }

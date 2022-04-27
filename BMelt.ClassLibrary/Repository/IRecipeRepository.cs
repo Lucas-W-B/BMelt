@@ -4,6 +4,6 @@ namespace BMelt.ClassLibrary.Repository
 {
     public interface IRecipeRepository : IRepository<Recipe>
     {
-        public Task<IEnumerable<Recipe>> GetAsync(Cuisine cuisine);
+        public Task<IEnumerable<Recipe>> GetByCuisineAsync(Guid cuisineId);
     }
 }
