@@ -1,5 +1,5 @@
 using BMelt.ClassLibrary.Models;
-using BMelt.ClassLibrary.Repository;
+using BMelt.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

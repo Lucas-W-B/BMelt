@@ -4,9 +4,15 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt.ClassLibrary", "BMelt.ClassLibrary\BMelt.ClassLibrary.csproj", "{B21B0065-F8E1-4D7B-9226-4F70FC9F2514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMelt.Api", "BMelt.Api\BMelt.Api.csproj", "{86C09BE8-37AA-4EBD-A830-B590034BFA01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt.Api", "BMelt.Api\BMelt.Api.csproj", "{86C09BE8-37AA-4EBD-A830-B590034BFA01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMelt.Razor", "BMelt.Razor\BMelt.Razor.csproj", "{F638BFF8-F2DC-4892-B0FB-453D6D850FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt.Razor", "BMelt.Razor\BMelt.Razor.csproj", "{F638BFF8-F2DC-4892-B0FB-453D6D850FC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMelt.Data", "BMelt.Data\BMelt.Data.csproj", "{13C96F1D-CF65-431F-BFAD-D637203C56C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMelt.App", "BMelt.App\BMelt.App.csproj", "{99B1098A-9654-48F8-8579-44A1048BAD38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMelt.Services", "BMelt.Services\BMelt.Services.csproj", "{1717AE94-4A29-479F-A832-DDE60BE76012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +32,18 @@ Global
 		{F638BFF8-F2DC-4892-B0FB-453D6D850FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F638BFF8-F2DC-4892-B0FB-453D6D850FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F638BFF8-F2DC-4892-B0FB-453D6D850FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C96F1D-CF65-431F-BFAD-D637203C56C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C96F1D-CF65-431F-BFAD-D637203C56C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C96F1D-CF65-431F-BFAD-D637203C56C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C96F1D-CF65-431F-BFAD-D637203C56C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B1098A-9654-48F8-8579-44A1048BAD38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B1098A-9654-48F8-8579-44A1048BAD38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B1098A-9654-48F8-8579-44A1048BAD38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B1098A-9654-48F8-8579-44A1048BAD38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1717AE94-4A29-479F-A832-DDE60BE76012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1717AE94-4A29-479F-A832-DDE60BE76012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1717AE94-4A29-479F-A832-DDE60BE76012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1717AE94-4A29-479F-A832-DDE60BE76012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

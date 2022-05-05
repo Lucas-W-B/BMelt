@@ -1,0 +1,14 @@
+﻿@using BMelt.ClassLibrary.Models
+
+<a href="recipe/@Model.Id">
+    <div class="recipe-card">
+        <label>@Model.Name</label>
+        <ul class="cuisines">
+            @foreach (var cuisine in Model.Cuisines)
+            {
+               <li>@cuisine.ToString()</li>
+            }
+        </ul>
+        <img src="@Model.ImagePath" />
+    </div>
+</a>
